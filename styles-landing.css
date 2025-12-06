@@ -69,6 +69,7 @@ body::before {
   font-size: 22px;
   text-shadow: 0 6px 20px rgba(0,0,0,.6);
   transition: all .3s ease;
+  position: relative;
 }
 
 .brand-title::after {
@@ -76,12 +77,14 @@ body::before {
   display: block;
   height: 3px;
   width: 0%;
-  background: var(--accent);
+  background: linear-gradient(90deg, #002868, #ffffff, #bf0a30);
   margin-top: 4px;
   transition: width 0.4s ease;
 }
 
-.brand-title:hover::after { width: 100%; }
+.brand-title:hover::after {
+  width: 100%;
+}
 
 .main-nav { display: flex; align-items: center; gap: 20px; transition: transform .3s ease; }
 
@@ -208,8 +211,10 @@ body::before {
 .testi cite { display: block; margin-top: 12px; font-size: 16px; color: var(--accent); }
 
 .cta-strong { position: relative; background: linear-gradient(135deg, rgba(0,40,104,0.85), rgba(191,10,48,0.85)); clip-path: polygon(0 0,100% 0,100% 85%,0 100%); margin-top: 80px; }
-.cta-strong .cta-box { max-width: 700px; margin: 0 auto; text-align: center; padding: 36px; font-size: 20px; line-height: 1.5; border-radius: 16px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); box-shadow: 0 14px 36px rgba(0,0,0,0.35); transition: transform .3s ease, box-shadow .3s ease; }
+.cta-strong .cta-box { max-width: 700px; margin: 0 auto; text-align: center; padding: 50px 36px 36px 36px; font-size: 20px; line-height: 1.5; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08)); backdrop-filter: blur(12px); box-shadow: 0 14px 36px rgba(0,0,0,0.35); transition: transform .3s ease, box-shadow .3s ease; }
 .cta-strong .cta-box:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(0,0,0,.45); }
+.cta-strong .cta-box .btn-primary { margin-top: 24px; padding: 16px 32px; font-size: 20px; border-radius: 14px; box-shadow: 0 16px 40px rgba(2,23,71,.35); }
+.cta-strong .cta-box .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 22px 50px rgba(2,23,71,.45); }
 
 .site-footer { background: rgba(0,0,0,0.85); color: #cfd8e3; padding: 40px 20px; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; }
 .site-footer img { max-width: 120px; margin-bottom: 10px; display: block; }
