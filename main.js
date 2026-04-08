@@ -11,16 +11,28 @@ if (header) {
 const menuToggle = document.getElementById("menu-toggle");
 const mainNav = document.getElementById("mainNav");
 if (menuToggle && mainNav) {
+  const closeMenu = () => {
+    mainNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  };
+
   menuToggle.addEventListener("click", () => {
     const isOpen = mainNav.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   document.querySelectorAll("#mainNav a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!mainNav.classList.contains("open")) return;
+    if (mainNav.contains(event.target) || menuToggle.contains(event.target)) return;
+    closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 860) closeMenu();
   });
 }
 
@@ -89,7 +101,7 @@ if (wizardForm) {
     summaryBox.innerHTML = "";
     const fields = Array.from(wizardForm.querySelectorAll("input, select, textarea"));
     fields.forEach((field) => {
-      if (!field.name || !visibleFieldValue(field)) return;
+      if (!field.name || !visibleFieldValue(field) || field.offsetParent === null) return;
       const label = field.closest("label")?.querySelector("span")?.textContent || field.name;
       const wrapper = document.createElement("div");
       wrapper.className = "summary-item";
@@ -144,7 +156,7 @@ if (wizardForm) {
 
     fields.forEach((field) => {
       const value = visibleFieldValue(field);
-      if (!field.name || !value) return;
+      if (!field.name || !value || field.offsetParent === null) return;
       const label = field.closest("label")?.querySelector("span")?.textContent || field.name;
       const lines = pdf.splitTextToSize(`${label}: ${value}`, 180);
       if (y > 275) {

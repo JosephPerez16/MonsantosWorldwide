@@ -17,11 +17,20 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   color: var(--white);
   background: linear-gradient(180deg, rgba(4,11,24,0.93), rgba(6,16,31,0.96)), url("img/background5.jpg") center center / cover fixed no-repeat;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
 }
 
 .form-shell {
@@ -39,6 +48,8 @@ body {
   align-items: center;
   gap: 14px;
   margin-bottom: 18px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .form-brand img {
@@ -48,6 +59,11 @@ body {
   object-fit: cover;
   border: 2px solid rgba(255,255,255,0.16);
   box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+  flex-shrink: 0;
+}
+
+.form-brand div {
+  min-width: 0;
 }
 
 .form-brand span {
@@ -55,6 +71,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 1.06rem;
+  overflow-wrap: anywhere;
 }
 
 .form-brand small {
@@ -74,23 +91,27 @@ body {
   background: rgba(255,255,255,0.08);
   border: 1px solid var(--border);
   margin-bottom: 18px;
+  max-width: 100%;
 }
 
 .form-header h1 {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(2rem, 4vw, 2.9rem);
   margin-bottom: 10px;
+  overflow-wrap: anywhere;
 }
 
-.form-header p {
+.form-header p,
+.step-head p,
+.summary-item span,
+.trust-strip span {
   color: var(--soft);
   line-height: 1.8;
-  max-width: 760px;
 }
 
 .trust-strip {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin-top: 24px;
 }
@@ -100,6 +121,7 @@ body {
   border-radius: 18px;
   background: rgba(255,255,255,0.08);
   border: 1px solid var(--border);
+  min-width: 0;
 }
 
 .trust-strip strong {
@@ -108,11 +130,6 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 1.35rem;
   margin-bottom: 6px;
-}
-
-.trust-strip span {
-  color: var(--soft);
-  font-size: 0.94rem;
 }
 
 .wizard-card {
@@ -150,6 +167,7 @@ body {
 .step-indicator {
   font-weight: 600;
   color: var(--soft);
+  white-space: nowrap;
 }
 
 .step {
@@ -168,11 +186,7 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(1.35rem, 3vw, 2rem);
   margin-bottom: 8px;
-}
-
-.step-head p {
-  color: var(--soft);
-  line-height: 1.8;
+  overflow-wrap: anywhere;
 }
 
 .field-grid {
@@ -189,11 +203,13 @@ label {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 label span {
   font-size: 0.94rem;
   color: rgba(255,255,255,0.88);
+  overflow-wrap: anywhere;
 }
 
 input,
@@ -209,6 +225,7 @@ textarea {
   font-size: 0.98rem;
   outline: none;
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  min-width: 0;
 }
 
 select option {
@@ -253,7 +270,6 @@ textarea:focus {
 }
 
 .summary-item span {
-  color: var(--soft);
   word-break: break-word;
 }
 
@@ -286,6 +302,16 @@ textarea:focus {
   color: var(--white);
 }
 
+@media (max-width: 860px) {
+  .form-shell {
+    width: min(1040px, calc(100% - 22px));
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+}
+
 @media (max-width: 720px) {
   .wizard-card {
     padding: 20px;
@@ -307,12 +333,48 @@ textarea:focus {
     align-items: stretch;
   }
 
+  .step-indicator {
+    text-align: center;
+  }
+
   .btn-action {
     width: 100%;
+    min-width: 0;
   }
 
   .form-brand img {
     width: 60px;
     height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-shell {
+    width: min(1040px, calc(100% - 16px));
+    margin: 18px auto;
+    padding-bottom: 18px;
+  }
+
+  .form-brand {
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .form-brand img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .back-link,
+  .btn-action,
+  input,
+  select,
+  textarea {
+    font-size: 0.95rem;
+  }
+
+  .wizard-card {
+    padding: 16px;
+    border-radius: 20px;
   }
 }
