@@ -3,122 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formulario DS-160</title>
+  <title>Evaluación Migratoria | Monsantos Worldwide Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="logo/logo.jpg">
 </head>
 <body>
-  <div class="overlay"></div>
-  <div class="container">
-    <h1>Formulario DS-160</h1>
-    <p class="subtitle">Complete todos los campos requeridos</p>
+  <div class="form-shell">
+    <div class="form-header">
+      <div class="form-brand">
+        <img src="logo/logo.jpg" alt="Monsantos Worldwide Solutions">
+        <div>
+          <span>Monsantos Worldwide Solutions</span>
+          <small>Asesoría migratoria internacional</small>
+        </div>
+      </div>
+      <a href="index.html" class="back-link">← Volver al inicio</a>
+      <h1>Evaluación Migratoria</h1>
+      <p>Complete la información solicitada para que nuestro equipo pueda evaluar su caso de manera clara, organizada y profesional.</p>
+      <div class="trust-strip">
+        <div><strong>10+</strong><span>Años de experiencia</span></div>
+        <div><strong>80+</strong><span>Visas procesadas</span></div>
+        <div><strong>100%</strong><span>Transparencia</span></div>
+      </div>
+    </div>
 
-    <form class="form-grid">
-
-      <!-- DATOS PERSONALES -->
-      <div class="section">
-        <h2>Datos Personales</h2>
-        <label>Nombre completo:<input type="text" /></label>
-        <label>Estado civil:<input type="text" /></label>
-        <label>Dirección casa:<input type="text" /></label>
-        <label>Teléfono personal:<input type="text" /></label>
-        <label>Teléfono residencial:<input type="text" /></label>
-        <label>Teléfono laboral:<input type="text" /></label>
-        <label>Correo electrónico:<input type="email" /></label>
+    <div class="wizard-card">
+      <div class="progress-top">
+        <div class="progress-track"><div id="progressBar"></div></div>
+        <div class="step-indicator"><span id="stepCurrent">1</span> / <span id="stepTotal">8</span></div>
       </div>
 
-      <!-- REDES SOCIALES -->
-      <div class="section">
-        <h2>Redes Sociales</h2>
-        <label>Facebook:<input type="text" /></label>
-        <label>Instagram:<input type="text" /></label>
-      </div>
+      <form id="wizardForm">
+        <section class="step active" data-title="Proceso migratorio">
+          <div class="step-head">
+            <h2>Seleccione el proceso que desea iniciar</h2>
+            <p>Elija el servicio para adaptar la evaluación a su caso.</p>
+          </div>
+          <div class="field-grid single">
+            <label>
+              <span>Proceso migratorio</span>
+              <select name="service" id="serviceSelect" required>
+                <option value="">Seleccione una opción</option>
+                <option value="visa_americana">Visa Americana</option>
+                <option value="renovacion_visa">Renovación de Visa</option>
+                <option value="residencia">Residencia / Green Card</option>
+                <option value="perdon">Perdón Migratorio</option>
+                <option value="ciudadania">Ciudadanía Americana</option>
+                <option value="peticion_familiar">Petición Familiar</option>
+                <option value="trabajo_estudio">Visa de Trabajo / Estudio</option>
+                <option value="europa">Aplicaciones Europa</option>
+                <option value="otro">Otro Proceso</option>
+              </select>
+            </label>
+          </div>
+        </section>
 
-      <!-- LABORAL -->
-      <div class="section">
-        <h2>Información Laboral</h2>
-        <label>Empresa donde labora:<input type="text" /></label>
-        <label>Cargo:<input type="text" /></label>
-        <label>Fecha de inicio (día, mes, año):<input type="text" /></label>
-        <label>Sueldo total mensual:<input type="number" /></label>
-        <label>Dirección laboral:<input type="text" /></label>
-      </div>
+        <section class="step" data-title="Información personal">
+          <div class="step-head">
+            <h2>Información personal</h2>
+            <p>Comparta sus datos personales principales.</p>
+          </div>
+          <div class="field-grid">
+            <label><span>Nombre completo</span><input name="fullName" type="text" required></label>
+            <label><span>Fecha de nacimiento</span><input name="birthDate" type="date"></label>
+            <label><span>Sexo</span><select name="gender"><option value="">Seleccione</option><option>Masculino</option><option>Femenino</option></select></label>
+            <label><span>Nacionalidad</span><input name="nationality" type="text"></label>
+            <label><span>Estado civil</span><input name="maritalStatus" type="text"></label>
+            <label><span>Situación sentimental</span><input name="relationshipStatus" type="text"></label>
+            <label><span>Número de pasaporte</span><input name="passportNumber" type="text"></label>
+            <label><span>Vencimiento del pasaporte</span><input name="passportExpiry" type="date"></label>
+          </div>
+        </section>
 
-      <!-- CONTACTO EN USA -->
-      <div class="section">
-        <h2>Contacto en USA</h2>
-        <label>Nombre completo:<input type="text" /></label>
-        <label>Teléfono:<input type="text" /></label>
-        <label>Dirección:<input type="text" /></label>
-        <label>Email:<input type="email" /></label>
-        <label>Parentesco:<input type="text" /></label>
-      </div>
+        <section class="step" data-title="Contacto">
+          <div class="step-head">
+            <h2>Información de contacto</h2>
+            <p>Incluya sus principales canales de comunicación.</p>
+          </div>
+          <div class="field-grid">
+            <label class="full"><span>Dirección completa</span><input name="address" type="text"></label>
+            <label><span>Ciudad</span><input name="city" type="text"></label>
+            <label><span>País</span><input name="country" type="text"></label>
+            <label><span>Teléfono personal</span><input name="personalPhone" type="text"></label>
+            <label><span>Teléfono residencial</span><input name="homePhone" type="text"></label>
+            <label><span>Teléfono laboral</span><input name="workPhone" type="text"></label>
+            <label class="full"><span>Correo electrónico</span><input name="email" type="email"></label>
+          </div>
+        </section>
 
-      <!-- VIAJE -->
-      <div class="section">
-        <h2>Plan de Viaje</h2>
-        <label>Fecha de entrada y salida:<input type="text" /></label>
-        <label>Países visitados en últimos 5 años:<input type="text" /></label>
-      </div>
+        <section class="step" data-title="Redes sociales">
+          <div class="step-head">
+            <h2>Redes sociales</h2>
+            <p>Agregue las redes que utiliza actualmente.</p>
+          </div>
+          <div class="field-grid">
+            <label><span>Facebook</span><input name="facebook" type="text"></label>
+            <label><span>Instagram</span><input name="instagram" type="text"></label>
+            <label><span>TikTok</span><input name="tiktok" type="text"></label>
+            <label><span>LinkedIn</span><input name="linkedin" type="text"></label>
+            <label><span>X / Twitter</span><input name="twitter" type="text"></label>
+            <label><span>Otra red</span><input name="otherSocial" type="text"></label>
+          </div>
+        </section>
 
-      <!-- PAREJA -->
-      <div class="section">
-        <h2>Pareja / Esposo(a)</h2>
-        <label>Nombre completo:<input type="text" /></label>
-        <label>Lugar de nacimiento:<input type="text" /></label>
-        <label>Fecha de nacimiento:<input type="text" /></label>
-      </div>
+        <section class="step" data-title="Perfil laboral y económico">
+          <div class="step-head">
+            <h2>Perfil laboral y económico</h2>
+            <p>Indique a qué se dedica y cuáles son sus ingresos.</p>
+          </div>
+          <div class="field-grid">
+            <label><span>Empresa actual</span><input name="company" type="text"></label>
+            <label><span>Cargo</span><input name="position" type="text"></label>
+            <label><span>Tiempo laborando</span><input name="timeWorking" type="text"></label>
+            <label><span>Ingreso mensual</span><input name="monthlyIncome" type="text"></label>
+            <label><span>Otros ingresos</span><input name="otherIncome" type="text"></label>
+            <label><span>A qué se dedica</span><input name="occupationDetail" type="text"></label>
+            <label><span>Negocio propio</span><select name="ownBusiness"><option value="">Seleccione</option><option>Sí</option><option>No</option></select></label>
+            <label><span>Descripción adicional</span><input name="economicDescription" type="text"></label>
+          </div>
+        </section>
 
-      <!-- PADRES -->
-      <div class="section">
-        <h2>Información de Padres</h2>
-        <label>Nombre del padre:<input type="text" /></label>
-        <label>Fecha de nacimiento:<input type="text" /></label>
-        <label>Estatus migratorio del padre:<input type="text" /></label>
-        <label>Nombre de la madre:<input type="text" /></label>
-        <label>Fecha de nacimiento:<input type="text" /></label>
-        <label>Estatus migratorio de la madre:<input type="text" /></label>
-      </div>
+        <section class="step" data-title="Familia y contactos en USA">
+          <div class="step-head">
+            <h2>Familia y contactos en USA</h2>
+            <p>Comparta la información relacionada con familiares y contactos en Estados Unidos.</p>
+          </div>
+          <div class="field-grid">
+            <label><span>¿Tiene familia en USA?</span><select name="familyInUsa"><option value="">Seleccione</option><option>Sí</option><option>No</option></select></label>
+            <label><span>Nombre del familiar</span><input name="familyNameUsa" type="text"></label>
+            <label><span>Parentesco</span><input name="familyRelationUsa" type="text"></label>
+            <label><span>Estatus migratorio del familiar</span><input name="familyStatusUsa" type="text"></label>
+            <label><span>Nombre del contacto en USA</span><input name="usaContactName" type="text"></label>
+            <label><span>Relación con esa persona</span><input name="usaContactRelation" type="text"></label>
+            <label><span>Teléfono del contacto</span><input name="usaContactPhone" type="text"></label>
+            <label><span>Correo del contacto</span><input name="usaContactEmail" type="email"></label>
+            <label class="full"><span>Dirección del contacto en USA</span><input name="usaContactAddress" type="text"></label>
+          </div>
+        </section>
 
-      <!-- FAMILIA EN USA -->
-      <div class="section">
-        <h2>Familiares en USA</h2>
-        <label>Nombre completo:<input type="text" /></label>
-        <label>Parentesco:<input type="text" /></label>
-        <label>Estatus migratorio:<input type="text" /></label>
-      </div>
+        <section class="step service-step" data-title="Detalles del proceso">
+          <div class="step-head">
+            <h2>Detalles del proceso seleccionado</h2>
+            <p>Este bloque se adapta al servicio que ha elegido.</p>
+          </div>
 
-      <!-- OTROS -->
-      <div class="section">
-        <h2>Otros Datos</h2>
-        <label>¿Ha solicitado visa de residente?:<input type="text" /></label>
-        <label>Nombre del solicitante:<input type="text" /></label>
-        <label>¿Le han negado visa?:<input type="text" /></label>
-        <label>¿Manejo de armas de fuego?:<input type="text" /></label>
-      </div>
+          <div class="service-fields" data-service="visa_americana renovacion_visa trabajo_estudio europa otro">
+            <div class="field-grid">
+              <label><span>Motivo del viaje</span><input name="travelReason" type="text"></label>
+              <label><span>Fecha tentativa</span><input name="travelDate" type="text"></label>
+              <label><span>Duración estimada</span><input name="travelDuration" type="text"></label>
+              <label><span>Quién costea el viaje</span><input name="travelSponsor" type="text"></label>
+              <label class="full"><span>Destino principal</span><input name="travelDestination" type="text"></label>
+            </div>
+          </div>
 
-      <!-- EDUCACIÓN -->
-      <div class="section">
-        <h2>Estudios</h2>
-        <label>Nivel de estudios:<input type="text" /></label>
-        <label>Centro de estudios:<input type="text" /></label>
-        <label>Título obtenido:<input type="text" /></label>
-        <label>Fecha inicio y graduación:<input type="text" /></label>
-      </div>
+          <div class="service-fields hidden" data-service="residencia peticion_familiar">
+            <div class="field-grid">
+              <label><span>Tipo de petición</span><input name="petitionType" type="text"></label>
+              <label><span>Nombre del peticionario</span><input name="petitionerName" type="text"></label>
+              <label><span>Relación con el peticionario</span><input name="petitionerRelation" type="text"></label>
+              <label><span>Estatus del peticionario</span><input name="petitionerStatus" type="text"></label>
+              <label class="full"><span>Información adicional del caso</span><input name="petitionNotes" type="text"></label>
+            </div>
+          </div>
 
-      <!-- TRABAJO ANTERIOR -->
-      <div class="section">
-        <h2>Trabajo Anterior</h2>
-        <label>Empresa:<input type="text" /></label>
-        <label>Dirección y teléfono:<input type="text" /></label>
-        <label>Supervisor inmediato:<input type="text" /></label>
-        <label>Cargo desempeñado:<input type="text" /></label>
-        <label>Sueldo:<input type="number" /></label>
-        <label>Fecha inicio y fin:<input type="text" /></label>
-      </div>
+          <div class="service-fields hidden" data-service="perdon">
+            <div class="field-grid">
+              <label><span>Tipo de perdón</span><input name="waiverType" type="text"></label>
+              <label><span>Motivo del perdón</span><input name="waiverReason" type="text"></label>
+              <label><span>Violación migratoria</span><input name="immigrationViolation" type="text"></label>
+              <label><span>Tiempo fuera de USA</span><input name="timeOutsideUsa" type="text"></label>
+              <label class="full"><span>Detalles adicionales del caso</span><input name="waiverNotes" type="text"></label>
+            </div>
+          </div>
 
-      <button type="submit" class="submit-btn">Enviar</button>
-    </form>
+          <div class="service-fields hidden" data-service="ciudadania">
+            <div class="field-grid">
+              <label><span>Residente permanente desde</span><input name="residentSince" type="text"></label>
+              <label><span>Tiempo viviendo en USA</span><input name="timeInUsa" type="text"></label>
+              <label><span>Historial de viajes</span><input name="travelHistory" type="text"></label>
+              <label><span>Declaración de impuestos</span><input name="taxDeclaration" type="text"></label>
+              <label class="full"><span>Observaciones del proceso</span><input name="citizenshipNotes" type="text"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="step" data-title="Información adicional">
+          <div class="step-head">
+            <h2>Información adicional</h2>
+            <p>Agregue cualquier detalle adicional que considere importante para su evaluación.</p>
+          </div>
+          <div class="field-grid">
+            <label><span>¿Ha solicitado visa antes?</span><input name="previousVisa" type="text"></label>
+            <label><span>¿Le han negado visa?</span><input name="visaDenied" type="text"></label>
+            <label><span>Antecedentes relevantes</span><input name="backgroundInfo" type="text"></label>
+            <label><span>Servicio militar / manejo de armas</span><input name="militaryInfo" type="text"></label>
+            <label class="full"><span>Observaciones</span><textarea name="additionalNotes" rows="5"></textarea></label>
+          </div>
+        </section>
+
+        <section class="step" data-title="Revisión final">
+          <div class="step-head">
+            <h2>Revisión final</h2>
+            <p>Verifique la información antes de enviar su evaluación.</p>
+          </div>
+          <div id="summaryBox" class="summary-box"></div>
+        </section>
+
+        <div class="wizard-actions">
+          <button type="button" id="prevBtn" class="btn-action secondary">Atrás</button>
+          <button type="button" id="nextBtn" class="btn-action primary">Siguiente</button>
+          <button type="submit" id="submitBtn" class="btn-action primary">Enviar evaluación</button>
+        </div>
+      </form>
+    </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
